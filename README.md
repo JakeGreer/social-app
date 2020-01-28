@@ -2,6 +2,6 @@
 
 ## Usage
 
-change directory into /API and run `dotnet watch run`
+In one terminal change directory into /API and run `dotnet watch run`
 
-change directoy into /client and run `npm start`
+In another terminal change directoy into /client and run `npm start`
