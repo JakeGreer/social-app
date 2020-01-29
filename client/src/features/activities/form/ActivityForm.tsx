@@ -4,15 +4,15 @@ import { IActivity } from '../../../app/models/activity';
 import { v4 as uuid } from 'uuid';
 import ActivityStore from '../../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
 interface DetailParams {
   id: string;
 }
 
 const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
-  history,
-  match
+  match,
+  history
 }) => {
   const activityStore = useContext(ActivityStore);
   const {
@@ -45,8 +45,8 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
     };
   }, [
     loadActivity,
-    match.params.id,
     clearActivity,
+    match.params.id,
     initialFormState,
     activity.id.length
   ]);
@@ -78,42 +78,42 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
     <Segment clearing>
       <Form onSubmit={handleSubmit}>
         <Form.Input
-          name="title"
-          placeholder="title"
-          value={activity.title}
           onChange={handleInputChange}
+          name="title"
+          placeholder="Title"
+          value={activity.title}
         />
         <Form.TextArea
-          rows={2}
+          onChange={handleInputChange}
           name="description"
+          rows={2}
           placeholder="Description"
           value={activity.description}
-          onChange={handleInputChange}
         />
         <Form.Input
+          onChange={handleInputChange}
           name="category"
           placeholder="Category"
           value={activity.category}
-          onChange={handleInputChange}
         />
         <Form.Input
+          onChange={handleInputChange}
           name="date"
           type="datetime-local"
           placeholder="Date"
           value={activity.date}
-          onChange={handleInputChange}
         />
         <Form.Input
+          onChange={handleInputChange}
           name="city"
           placeholder="City"
           value={activity.city}
-          onChange={handleInputChange}
         />
         <Form.Input
+          onChange={handleInputChange}
           name="venue"
           placeholder="Venue"
           value={activity.venue}
-          onChange={handleInputChange}
         />
         <Button
           loading={submitting}
@@ -123,10 +123,10 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
           content="Submit"
         />
         <Button
+          onClick={() => history.push('/activities')}
           floated="right"
           type="button"
           content="Cancel"
-          onClick={() => history.push('/activities')}
         />
       </Form>
     </Segment>

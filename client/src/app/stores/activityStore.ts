@@ -18,7 +18,7 @@ class ActivityStore {
     );
   }
 
-  @action loadActivites = async () => {
+  @action loadActivities = async () => {
     this.loadingInitial = true;
     try {
       const activities = await agent.Activities.list();
@@ -33,7 +33,6 @@ class ActivityStore {
       runInAction('load activities error', () => {
         this.loadingInitial = false;
       });
-      console.log(error);
     }
   };
 
@@ -70,12 +69,12 @@ class ActivityStore {
     this.submitting = true;
     try {
       await agent.Activities.create(activity);
-      runInAction('creating activity', () => {
+      runInAction('create activity', () => {
         this.activityRegistry.set(activity.id, activity);
         this.submitting = false;
       });
     } catch (error) {
-      runInAction('creating activity error', () => {
+      runInAction('create activity error', () => {
         this.submitting = false;
       });
       console.log(error);
@@ -92,7 +91,7 @@ class ActivityStore {
         this.submitting = false;
       });
     } catch (error) {
-      runInAction('editing activity error', () => {
+      runInAction('edit activity error', () => {
         this.submitting = false;
       });
       console.log(error);
@@ -113,7 +112,7 @@ class ActivityStore {
         this.target = '';
       });
     } catch (error) {
-      runInAction('deleting activity error', () => {
+      runInAction('delete activity error', () => {
         this.submitting = false;
         this.target = '';
       });
