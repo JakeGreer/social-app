@@ -15,7 +15,7 @@ const HomePage = () => {
           />
           Social App
         </Header>
-        <Header as="h2" inverted content="Welcome to Reactivities" />
+        <Header as="h2" inverted content="Welcome to the Social App" />
         <Button as={Link} to="/activities" size="huge" inverted>
           Take me to the Social App!
         </Button>
